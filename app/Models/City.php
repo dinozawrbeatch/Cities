@@ -11,4 +11,9 @@ class City extends Model
 
     protected $table = 'cities';
     protected $guarded = false;
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class,'city_id', 'id');
+    }
 }

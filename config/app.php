@@ -181,11 +181,12 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Stevebauman\Location\LocationServiceProvider::class,
+
 
         /*
          * Package Service Providers...
          */
+        Stevebauman\Location\LocationServiceProvider::class,
 
         /*
          * Application Service Providers...

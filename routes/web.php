@@ -18,11 +18,24 @@ Route::group(['namespace' => 'Welcome'], function () {
 });
 
 Route::group(['namespace' => 'User', 'prefix' => 'users'], function () {
-    Route::get('/', 'IndexController')->name('user.index');
+    Route::post('/', 'StoreController')->name('user.store');
+    Route::get('/{user}', 'ShowController')->name('user.show');
 });
 
 Route::group(['namespace' => 'City', 'prefix' => 'cities'], function () {
     Route::get('/', 'IndexController')->name('city.index');
+    Route::get('/{city}', 'ShowController')->name('city.show');
+
+    Route::group(['namespace' => 'Review', 'prefix' => 'reviews'], function () {
+        Route::get('/{city}', 'IndexController')->name('city.reviews.index');
+    });
+});
+
+Route::group(['namespace' => 'Review', 'prefix' => 'reviews'], function () {
+    Route::post('/', 'StoreController')->name('review.store');
+    Route::put('/{review}', 'UpdateController')->name('review.update');
+    Route::get('/{review}/edit', 'EditController')->name('review.edit');
+    Route::delete('/{review}', 'DeleteController')->name('review.delete');
 });
 
 

@@ -5,9 +5,8 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Регистрация') }}</div>
-
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('user.store') }}">
                             @csrf
                             <div class="row mb-3">
                                 <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Имя') }}</label>
@@ -64,11 +63,10 @@
                                 <label for="phone"
                                        class="col-md-4 col-form-label text-md-end">{{ __('Номер телефона') }}</label>
 
-                                <div class="col-md-6">
+                                <div class="col-lg-6">
                                     <input id="phone" type="text"
-                                           class="form-control bfh-phone @error('phone') is-invalid @enderror"
+                                           class="form-control input-group @error('phone') is-invalid @enderror"
                                            name="phone" value="{{ old('name') }}" required autocomplete="off" autofocus>
-
                                     @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -76,7 +74,6 @@
                                     @enderror
                                 </div>
                             </div>
-
 
                             <div class="row mb-3">
                                 <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
@@ -121,17 +118,17 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Зарегистрироваться') }}
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+                    <div class="row mb-0">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('Зарегистрироваться') }}
+                            </button>
+                        </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection

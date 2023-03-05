@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('fio');
             $table->string('email')->unique();
-            $table->decimal('phone')->unique();
+            $table->unsignedBigInteger('phone')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

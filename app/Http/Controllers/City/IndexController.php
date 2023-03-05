@@ -11,6 +11,7 @@ class IndexController extends Controller
     public function __invoke()
     {
         $cities = City::all();
-        return view('cities.index', compact('cities'));
+        $pageCities = City::orderBy('name')->paginate(50);
+        return view('cities.index', compact('cities', 'pageCities'));
     }
 }
