@@ -187,6 +187,7 @@ return [
          * Package Service Providers...
          */
         Stevebauman\Location\LocationServiceProvider::class,
+        Igoshev\Captcha\Providers\CaptchaServiceProvider::class,
 
         /*
          * Application Service Providers...

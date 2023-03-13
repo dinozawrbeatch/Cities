@@ -28,6 +28,7 @@ class StoreRequest extends FormRequest
             'phone' => 'required|digits:11|unique:users',
             'email' => 'required|email|unique:users',
             'password' => 'required|string',
+            'captcha' => 'required|captcha'
         ];
     }
 
@@ -48,6 +49,8 @@ class StoreRequest extends FormRequest
             'email.unique' => 'Такой email уже зарегистрирован',
             'password.required' => 'Это поле необходимо для заполнения',
             'password.string' => 'Пароль должен быть строкой',
+            'captcha.required' => 'Это поле необходимо для заполнения',
+            'captcha.captcha' => 'Неверно введен код с картинки',
         ];
     }
 }

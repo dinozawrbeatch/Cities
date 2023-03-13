@@ -21,12 +21,13 @@ class StoreRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+         return [
             'title' => 'required|string|max:100',
             'text' => 'required|string|max:255',
-            'rating' => 'required|integer|between:1,5',
+            'rating' => 'required|integer',
             'image' => 'nullable|file',
-            'city_id' => 'required|integer|exists:cities,id',
+            'city_ids' => 'nullable|array',
+            'city_ids.*' => 'nullable|integer|exists:cities,id',
             'user_id' => 'required|integer|exists:users,id',
         ];
     }
@@ -43,3 +44,4 @@ class StoreRequest extends FormRequest
         ];
     }
 }
+

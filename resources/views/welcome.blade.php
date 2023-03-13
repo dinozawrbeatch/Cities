@@ -33,14 +33,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="#" method="get">
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <form action="{{ route('city.reviews.index', 1) }}" method="get">
+                        <select class="form-select form-select-sm" name="city_name" aria-label=".form-select-sm example">
                             @foreach($cities as $city)
                                 <option value="{{ $city->id }}">{{ $city->name }}</option>
                             @endforeach
                         </select>
                         <div class="modal-footer align-items-center">
-                            <button type="button" class="btn btn-primary">Выбрать</button>
+                            <button type="submit" class="btn btn-primary">Выбрать</button>
                         </div>
                     </form>
                 </div>

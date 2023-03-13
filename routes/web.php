@@ -19,15 +19,18 @@ Route::group(['namespace' => 'Welcome'], function () {
 
 Route::group(['namespace' => 'User', 'prefix' => 'users'], function () {
     Route::post('/', 'StoreController')->name('user.store');
-    Route::get('/{user}', 'ShowController')->name('user.show');
 });
 
 Route::group(['namespace' => 'City', 'prefix' => 'cities'], function () {
     Route::get('/', 'IndexController')->name('city.index');
-    Route::get('/{city}', 'ShowController')->name('city.show');
+    Route::get('/{city}', 'IndexController')->name('city.show');
 
     Route::group(['namespace' => 'Review', 'prefix' => 'reviews'], function () {
         Route::get('/{city}', 'IndexController')->name('city.reviews.index');
+
+        Route::group(['namespace' => 'User', 'prefix' => 'users'], function () {
+            Route::get('/{user}', 'ShowController')->name('city.reviews.user.show');
+        });
     });
 });
 
@@ -36,9 +39,15 @@ Route::group(['namespace' => 'Review', 'prefix' => 'reviews'], function () {
     Route::put('/{review}', 'UpdateController')->name('review.update');
     Route::get('/{review}/edit', 'EditController')->name('review.edit');
     Route::delete('/{review}', 'DeleteController')->name('review.delete');
+
+    Route::group(['namespace' => 'User', 'prefix' => '{user}'], function () {
+        Route::get('/', 'IndexController')->name('reviews.user.index');
+    });
 });
 
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
