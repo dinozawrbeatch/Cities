@@ -2,11 +2,15 @@
 @section('content')
     <h1>Города</h1>
     @auth()
+        @if(auth()->user()->email_verified_at)
         <div class="text-end mb-3">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createReview">
                 Оставьте свой отзыв
             </button>
         </div>
+        @else
+            <h5 class="text-danger text-center">Подтвердите почту, чтобы оставлять отзывы</h5>
+        @endif
         <div class="container">
             <div class="modal fade" id="createReview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                  aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -89,7 +93,8 @@
                                 </div>
 
                                 <label>Выберите города</label>
-                                <select class="select2" multiple="multiple" name="city_ids[]" data-placeholder="Select a State"
+                                <select class="select2" multiple="multiple" name="city_ids[]"
+                                        data-placeholder="Select a State"
                                         style="width: 100%;">
                                     @foreach($cities as $city)
                                         <option value="{{ $city->id }}">{{ $city->name }}</option>
@@ -109,7 +114,9 @@
             @endauth
             @guest()
                 <div class="text-end text-center mb-3">
-                    Чтобы оставить отзыв авторизуйтесь
+                    Чтобы оставить отзыв <a href="{{ route('login') }}">
+                        авторизуйтесь
+                    </a>
                 </div>
             @endguest
             <ul class="list-group">

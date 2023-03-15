@@ -42,6 +42,20 @@ return [
         ],
     ],
 
+    'verification' => [
+        'enabled' => true,
+        'controller' => 'App\Http\Controllers\Auth\VerificationController',
+        'verify' => 'verification.verify',
+        'redirect' => '/home',
+        'mail' => [
+            'enabled' => true,
+            'from' => ['address' => 'example@example.com', 'name' => 'Example'],
+            'subject' => 'Please verify your email',
+            'content' => 'Click the button below to verify your email address.',
+            'cta' => 'Verify Email Address',
+        ],
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | User Providers

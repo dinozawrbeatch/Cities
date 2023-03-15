@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\StoreRequest;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 
 class StoreController extends Controller
@@ -16,7 +17,10 @@ class StoreController extends Controller
         unset($data['name'], $data['second_name'], $data['middle_name']);
         $data['password'] = Hash::make($data['password']);
         $data['fio'] = $fio;
-        User::create($data);
-        return redirect()->route('welcome');
+        $user = User::create($data);
+
+        event(new Registered($user));
+
+        return redirect()->route('verification.notice')->with('Проверьте вашу почту');
     }
 }
