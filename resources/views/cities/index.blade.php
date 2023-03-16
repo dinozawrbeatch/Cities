@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-    <h1>Города</h1>
+    <h1 class="text-center">Города</h1>
     @auth()
         @if(auth()->user()->email_verified_at)
         <div class="text-end mb-3">
@@ -87,9 +87,7 @@
 
                                 <div class="mb-5">
                                     <label for="image" class="form-label">Можете прикрепить фото(необязательно)</label>
-                                    <input class="form-control form-control-sm" id="image"
-
-                                           name="image" type="file">
+                                    <input class="form-control form-control-sm" id="image" name="image" type="file">
                                 </div>
 
                                 <label>Выберите города</label>
@@ -104,7 +102,7 @@
                                 <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
 
                                 <div class="modal-footer align-items-center">
-                                    <button type="submit" class="btn btn-primary">Отправить</button>
+                                    <button id="sendReviewBtn" type="submit" class="btn btn-primary">Отправить</button>
                                 </div>
                             </form>
                         </div>
@@ -130,4 +128,5 @@
                 {{ $pageCities->links() }}
             </div>
         </div>
+        <script src="{{ asset('assets/js/preloader.js') }}"></script>
 @endsection

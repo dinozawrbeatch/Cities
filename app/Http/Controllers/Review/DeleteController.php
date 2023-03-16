@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Review;
 
 use App\Http\Controllers\Controller;
+use App\Models\City;
 use App\Models\Review;
+use App\Models\User;
 
-class DeleteController extends Controller
+class DeleteController extends BaseController
 {
     public function __invoke(Review $review)
     {
-        return view('reviews.show', compact('review'));
+        $review->delete();
+        return redirect()->route('user.reviews.index', auth()->user()->id);
     }
 }

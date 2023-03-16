@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Auth\EmailVerificationController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,8 +19,11 @@ Route::group(['namespace' => 'Welcome'], function () {
 });
 
 Route::group(['namespace' => 'User', 'prefix' => 'users'], function () {
-    Route::post('/', 'StoreController')->name('user.store');
 
+    Route::group(['namespace' => 'Review', 'prefix' => 'reviews'], function () {
+        Route::get('/{user}', 'IndexController')->name('user.reviews.index');
+
+    });
 });
 
 Route::group(['namespace' => 'City', 'prefix' => 'cities'], function () {
@@ -40,7 +41,7 @@ Route::group(['namespace' => 'City', 'prefix' => 'cities'], function () {
 
 Route::group(['namespace' => 'Review', 'prefix' => 'reviews'], function () {
     Route::post('/', 'StoreController')->name('review.store');
-    Route::put('/{review}', 'UpdateController')->name('review.update');
+    Route::patch('/{review}', 'UpdateController')->name('review.update');
     Route::get('/{review}/edit', 'EditController')->name('review.edit');
     Route::delete('/{review}', 'DeleteController')->name('review.delete');
 

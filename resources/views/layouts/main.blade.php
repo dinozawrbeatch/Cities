@@ -13,6 +13,10 @@
     <script src="{{ asset('assets/vendors/jquery/jquery.min.js') }}"></script>
 </head>
 <body>
+<div id="preloader" class="visually-hidden position-absolute w-100 h-100 bg-black bg-opacity-75 d-flex
+ justify-content-center align-items-center left-0 top-0">
+    <div class="spinner-border" role="status"></div>
+</div>
 <div class="container">
     <header
         class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
@@ -24,6 +28,13 @@
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="/" class="nav-link px-2 link-secondary">Главная</a></li>
             <li><a href="{{ route('city.index') }}" class="nav-link px-2 link-dark">Города</a></li>
+            @if(auth()->user())
+                <li>
+                    <a href="{{ route('user.reviews.index', auth()->user()->id) }}" class="nav-link px-2 link-dark">
+                        Мои отзывы
+                    </a>
+                </li>
+            @endif
         </ul>
         @guest()
             <div class="col-md-3 text-end">
