@@ -12,13 +12,13 @@ function showModal(modalName) {
     modal.show();
 }
 
-window.onload = () => {
+setTimeout(window.onload = () => {
     if (modalWindow) {
         showModal('questionModal');
     } else {
         showModal('citySelector');
     }
-}
+}, 120)
 
 
 

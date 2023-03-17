@@ -128,5 +128,4 @@
                 {{ $pageCities->links() }}
             </div>
         </div>
-        <script src="{{ asset('assets/js/preloader.js') }}"></script>
 @endsection

@@ -88,5 +88,4 @@
         </div>
         <input type="hidden" value="{{ auth()->user()->id }}" name="user_id">
     </form>
-    <script src="{{ asset('assets/js/preloader.js') }}"></script>
 @endsection

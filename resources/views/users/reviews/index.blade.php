@@ -43,5 +43,4 @@
             </tr>
         @endforeach
         </tbody>
-        <script src="{{ asset('assets/js/preloader.js') }}"></script>
 @endsection

@@ -7939,8 +7939,8 @@ label {
   padding-bottom: 90px;
   text-align: center; }
 
-.preloader {
-    z-index: 100000;
+#preloader {
+    z-index: 2147483647;
 }
 
 /*# sourceMappingURL=style.css.map */

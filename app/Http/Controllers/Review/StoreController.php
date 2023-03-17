@@ -28,16 +28,16 @@ class StoreController extends BaseController
             $data['image'] = Storage::put('/images', $data['image']);
         }
 
-        $data['city_id'] = 1;
         if (isset($cityIds)) {
             $review = Review::firstOrCreate($data);
             $review->cities()->attach($cityIds);
         } else {
+            $data['city_id'] = 1;
             foreach ($cities as $city) {
                 Review::firstOrCreate($data);
                 $data['city_id']++;
             }
         }
-        return redirect()->route('city.index');
+        return redirect()->route('user.reviews.index', auth()->user()->id);
     }
 }
